@@ -1,3 +1,4 @@
+import sys
 import json
 import time
 import os.path
@@ -50,6 +51,9 @@ class DiskTimeline:
             record.printInfo( )
 
     def printFullDate( self, force ):
+        sys.stdout.write( '{} - '.format( datetime.datetime.now( ).isoformat( ) ) )
+        sys.stdout.flush( )
+
         count = len( self.records )
         if not force and count < self.MIN_RECORDS_FOR_ESTIMATE:
             print 'Not enough data to make an estimate.'
